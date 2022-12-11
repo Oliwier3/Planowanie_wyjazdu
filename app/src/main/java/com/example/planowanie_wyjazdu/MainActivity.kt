@@ -11,24 +11,33 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val x = findViewById<TextView>(R.id.data)
-        findViewById<CalendarView>(R.id.Kalendarz).setOnDateChangeListener(CalendarView.OnDateChangeListener { _, year, month, dayOfMonth ->
+
+        var czasWyj = 0.toLong()
+        var czasPow = 0.toLong()
+
+        val dataText = findViewById<TextView>(R.id.data)
+        val kalendarz = findViewById<CalendarView>(R.id.Kalendarz)
+        val wyjazd =  findViewById<TextView>(R.id.dataWyjazd)
+        val powrot = findViewById<TextView>(R.id.dataPowrot)
+
+        findViewById<CalendarView>(R.id.Kalendarz).setOnDateChangeListener{ _, year, month, dayOfMonth ->
+
             val data =  dayOfMonth.toString() + "-" + (month+1) + "-" + year
-            x.text = data
-        })
+            dataText.text = data
+        }
         findViewById<Button>(R.id.wyjazd).setOnClickListener {
-            findViewById<TextView>(R.id.dataWyjazd).text = x.text
+            czasWyj = kalendarz.date
+            wyjazd.text = dataText.text
         }
 
         findViewById<Button>(R.id.powrot).setOnClickListener {
-            findViewById<TextView>(R.id.dataPowrot).text = x.text
+            czasPow = kalendarz.date
+            powrot.text = dataText.text
         }
 
         findViewById<Button>(R.id.Oblicz).setOnClickListener {
-            val a = findViewById<TextView>(R.id.dataPowrot).text.toString().toInt()
-            val b = findViewById<TextView>(R.id.dataWyjazd).text.toString().toInt()
-            var c = b-a
-            findViewById<TextView>(R.id.Wynik).text = c.toString()
+            val dni = czasPow - czasWyj
+            findViewById<TextView>(R.id.Wynik).text = dni.toString()
         }
     }
 }
