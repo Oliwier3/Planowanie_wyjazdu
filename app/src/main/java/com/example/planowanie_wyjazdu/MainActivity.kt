@@ -10,10 +10,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var dataWidok = findViewById<TextView>(R.id.data).text.toString()
+
         findViewById<CalendarView>(R.id.Kalendarz).setOnDateChangeListener(CalendarView.OnDateChangeListener { _, year, month, dayOfMonth ->
-            val data = dayOfMonth.toString() + "-" + month + "-" + year
-            dataWidok = data
+            val data =  dayOfMonth.toString() + "-" + month+1 + "-" + year
+            findViewById<TextView>(R.id.data).text = data
+
         })
     }
 }
