@@ -7,6 +7,7 @@ import android.widget.CalendarView
 import android.widget.TextView
 
 
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.Oblicz).setOnClickListener {
             val dni = czasPow - czasWyj
             findViewById<TextView>(R.id.Wynik).text = dni.toString()
+
         }
     }
 }
