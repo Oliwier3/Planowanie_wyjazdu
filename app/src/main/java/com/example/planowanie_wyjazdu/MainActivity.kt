@@ -32,12 +32,14 @@ class MainActivity : AppCompatActivity() {
             dataText.text = data
         }
         findViewById<Button>(R.id.wyjazd).setOnClickListener {
-            czasWyj = kalendarz.date
+            czasWyj = kalendarz.getDate()
+            czasWyj /= 86400000
             wyjazd.text = dataText.text
         }
 
         findViewById<Button>(R.id.powrot).setOnClickListener {
-            czasPow = kalendarz.date
+            czasPow = kalendarz.getDate()
+            czasPow /= 86400000
             powrot.text = dataText.text
         }
 
