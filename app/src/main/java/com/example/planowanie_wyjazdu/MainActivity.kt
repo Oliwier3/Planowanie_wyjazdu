@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.CalendarView
 import android.widget.TextView
-
+import java.util.Date
 
 
 class MainActivity : AppCompatActivity() {
@@ -20,6 +20,11 @@ class MainActivity : AppCompatActivity() {
         val kalendarz = findViewById<CalendarView>(R.id.Kalendarz)
         val wyjazd =  findViewById<TextView>(R.id.dataWyjazd)
         val powrot = findViewById<TextView>(R.id.dataPowrot)
+
+        kalendarz.setMinDate(Date().getTime())
+
+        kalendarz.maxDate = kalendarz.minDate + 63113851900
+
 
         findViewById<CalendarView>(R.id.Kalendarz).setOnDateChangeListener{ _, year, month, dayOfMonth ->
 
